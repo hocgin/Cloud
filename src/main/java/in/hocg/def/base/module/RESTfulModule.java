@@ -4,6 +4,7 @@ import org.nutz.mvc.annotation.*;
 
 /**
  * Created by hocgin on 十一月28  028.
+ * 资源路由标准
  */
 public abstract class RESTfulModule extends BaseModule {
 

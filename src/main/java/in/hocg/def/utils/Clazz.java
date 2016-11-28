@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 /**
  * (๑`灬´๑)
  * Created by hocgin on 十一月28  028.
+ * 类 | 反射 相关的工具方法
  */
 public class Clazz {
 
