@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-if="http://www.w3.org/1999/xhtml"
+      xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Hello World
+<div id="v-app-1">
+    {{hocgin}}
+    {{width}}x{{height | capitalize}}
+    <img v-bind:data-src="dataSrc"/>
+    <span v-if="ifv">v-if == true</span>
+    <ul>
+        <li v-for="li in ul">
+            {{ li == 5?'五':li }}
+        </li>
+    </ul>
+
+    <button v-on:click="btClick">Reverse Message</button>
+    <input type="text" @keyup.delete="alert('This is delete')">
+    <input type="password" v-model="password"> <br>
+    <span>You password is [{{ password }}]</span>
+
+    <!--组件模板-->
+    <todo-item></todo-item>
+    <!--
+        标签 指定 组件解析器
+        v-for 指定 组件解析次数
+        v-bind 相当于赋值 eg. todo=item ,注：todo为组件解析器定义
+    -->
+    <todo-item v-for="item in ul" v-bind:todo="item"></todo-item>
+
+    <!--一次性赋值-->
+    <span v-once> This will never change: {{ password }}</span>
+    <div v-html="html"></div>
+</div>
+<img data-src="holder.js/300x200?text=Hello World" alt="" src=""/>
+
+
+<script src="../holder.js"></script>
+<script src="vue.js"></script>
+<script>
+    /**
+     * 定义节点，即 组件
+     * 一定要在渲染之前
+     */
+    Vue.component('todo-item', {
+        props:['todo'],
+        template: '<li>This is a todo {{ todo }}</li>'
+    });
+    var v_1 = new Vue({
+        el: '#v-app-1',
+        data: {
+            dataSrc: 'holder.js/300x211',
+            ifv: true,
+            height: 200,
+            width: 200,
+            password: '3306',
+            ul: [
+                5,
+                4,
+                3
+            ],
+            html: '<b>http://hocg.in</b>'
+        },
+        methods: { // , 也可以直接调用 eg.methodName()
+            btClick: function () {
+                window.console.log("Hello World");
+            },
+            alert: function (content) {
+                alert(content);
+            }
+        },
+        filters: { // 过滤器 eg. |{method}
+            capitalize: function (value) {
+                console.log("过滤器拦截" + value);
+                return value;
+            }
+        },
+        computed: {
+            hocgin:function () {
+                return "http://hocg.in";
+            }
+        }
+    });
+
+</script>
+</body>
+</html>
+
+<!--
+## 指令 `v-exp`
+- v-if
+> <node v-if="true"/> <node v-else>No/> => 移除/增加节点
+
+- v-bind:[attr]="[value]"    [缩写 `:[attr]="[value]"`]
+> 用于属性
+> <node v-bind:value="12306"/>    => 控制属性值
+> 扩展 【Class】
+> 【Class】: <div class="static" -bind:class="{ class:boolean }"></div>
+> 【Class】: <div class="static" -bind:class="[class1,class2,class3..]"></div>
+> 【Class】: <div class="static" -bind:class="[boolean? class1.1:class1.2, class2, class3]"></div>
+> 【Class】: <div class="static" -bind:class="[{class1:boolean}, class2, class3]"></div>
+> 扩展 【Style】
+> 【Style】: <div v-bind:style="{ [attr]: [value], [attr]: [value] .. }"></div>
+> <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
+> <div v-bind:style="[baseStyles, overridingStyles]">
+
+- v-on:[event](.modifiers)="[method]" [缩写 `@[event](.modifiers)="[method]"`]
+> 用于事件
+> <node v-on:click="clickEvt$Id"/>    => 事件绑定到methods中的方法
+> <form v-on:submit.prevent="onSubmit"></form> => .prevent 为特性修饰符(eg.触发的事件调用 event.preventDefault())
+
+- v-model
+> 表单元素专用
+
+- v-show
+- display:none 与`v-if`比较 DOM一直存在
+
+- v-for
+> `item in items` or  `(item,index) in items`
+
+
+## Vue
+new Vue({
+    el: DOM
+    data:{},
+    computed:{
+        egMethod:{
+            get:func(),
+            set:func(),
+        },
+        $method..
+    },// 可以定义data 数据， 也可以用于额外处理  (内部还可有get & set方法)
+    methods:{ $method.. }, // 响应方法之类的, 也可以直接调用 eg.methodName()
+    filters:{ $method.. }, // 过滤器 eg. |{methodName}
+    watch:{ $method.. },   //  监听与方法名一致的data变化
+    components:{}，      // 局部组件
+})
+
+## 组件
+/**
+* HTML  <my-component></my-component>  OR <div is="my-component"></div>
+**/
+Vue.component('my-component', {
+   props:{
+       more.. http://cn.vuejs.org/v2/guide/components.html#Prop-验证
+   }, // 也可以props: ['message'], // 声明字段， 类似读取节点属性
+  template: '<span>{{ message }}</span>',
+  data: function () { // 声明字段, 若是同一对象则进行共享，此为私有
+    return {
+       counter: 0
+    };
+  },
+  computed:{},   // 可以定义data 数据， 也可以用于额外处理  (内部还可有get & set方法)
+  methods:{ $method.. }, // 响应方法之类的, 也可以直接调用 eg.methodName()
+})
+
+## slot 类似 String.replace 默认替换 <slot></slot>
+
+-->
