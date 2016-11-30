@@ -5,7 +5,7 @@ var ioc = {
     conf : {
         type : "org.nutz.ioc.impl.PropertiesProxy",
         fields : {
-            paths : ["conf/db.properties"]
+            paths : ["conf/"]
         }
     },
     dataSource : {

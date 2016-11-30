@@ -22,7 +22,7 @@ public class MainSeeder {
      * @return
      */
     public List<Seeder> getSeeders() {
-        return new ArrayList<>(Arrays.asList(
+        return new ArrayList<>(Arrays.<Seeder>asList(
 
         ));
     }

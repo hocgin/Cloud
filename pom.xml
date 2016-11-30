@@ -5,18 +5,6 @@
     <artifactId>Cloud</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
     <name>Cloud</name>
     <developers>
         <developer>
@@ -29,9 +17,23 @@
 
     <properties>
         <nutz-version>1.r.58</nutz-version>
+        <servletApi-version>6.0.48</servletApi-version>
+        <groovyAll-version>2.4.7</groovyAll-version>
+        <commonsPool2-version>2.4.2</commonsPool2-version>
+        <jedis-version>2.9.0</jedis-version>
+        <quartz-version>2.2.3</quartz-version>
+        <druid-version>1.0.27</druid-version>
+        <mysqlConnectorJava-version>5.1.37</mysqlConnectorJava-version>
     </properties>
+
+
     <!--依赖:Start-->
     <dependencies>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${servletApi-version}</version>
+        </dependency>
         <!--NUTZ Core:Start-->
         <dependency>
             <groupId>org.nutz</groupId>
@@ -43,43 +45,95 @@
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
-            <version>2.4.7</version>
+            <version>${groovyAll-version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-pool2</artifactId>
-            <version>2.4.2</version>
+            <version>${commonsPool2-version}</version>
         </dependency>
 
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>2.9.0</version>
+            <version>${jedis-version}</version>
         </dependency>
         
-        <!--quartz 监控:Start-->
+        <!--quartz 定时任务:Start-->
         <dependency>
             <groupId>org.nutz</groupId>
             <artifactId>nutz-integration-quartz</artifactId>
-            <version>1.r.58</version>
+            <version>${nutz-version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-log4j12</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.nutz</groupId>
+                    <artifactId>nutz</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
-        <!--quartz 监控:End-->
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz-jobs</artifactId>
+            <version>${quartz-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>${quartz-version}</version>
+        </dependency>
+        <!--quartz 定时任务:End-->
+        <!--log4j Nutz必须依赖:Start-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-1.2-api</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <!--log4j Nutz必须依赖:End-->
+
         <!--alibaba数据库连接池:Start-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-            <version>1.0.27</version>
+            <version>${druid-version}</version>
         </dependency>
         <!--alibaba数据库连接池:End-->
         <!--MySql driver:Start-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.37</version>
+            <version>${mysqlConnectorJava-version}</version>
         </dependency>
         <!--MySql driver:End-->
     </dependencies>
     <!--依赖:End-->
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
