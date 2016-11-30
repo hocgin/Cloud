@@ -120,6 +120,15 @@
             <version>${mysqlConnectorJava-version}</version>
         </dependency>
         <!--MySql driver:End-->
+
+        <!--Email:Start-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-email</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <!--Email:End-->
+
     </dependencies>
     <!--依赖:End-->
 

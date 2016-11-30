@@ -22,6 +22,19 @@ public class MainSetup implements Setup {
         _initRedis(ioc);
         _loadSenders(ioc);
         _initQuartz(ioc);
+
+
+        // -- Test Email
+//        try {
+//            HtmlEmail email = ioc.get(HtmlEmail.class);
+//            email.addTo("578797748@qq.com");//请务必改成您自己的邮箱啊!!!
+//            email.setSubject("测试NutzBook");
+//            email.setMsg("This is a test mail ... :-)" + System.currentTimeMillis());
+//            email.buildMimeMessage();
+//            email.sendMimeMessage();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
     @Override
