@@ -6,6 +6,7 @@ import org.nutz.dao.Dao;
 import org.nutz.dao.entity.annotation.Table;
 import org.nutz.ioc.loader.annotation.Inject;
 import org.nutz.ioc.loader.annotation.IocBean;
+import org.nutz.service.IdNameEntityService;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;
@@ -14,7 +15,7 @@ import java.lang.reflect.ParameterizedType;
  * Created by hocgin on 十一月28  028.
  */
 @IocBean
-public abstract class BaseService<T extends BaseTable> {
+public abstract class BaseService<T extends BaseTable> extends IdNameEntityService{
     @Inject
     private Dao dao;
     private ParameterizedType clazz = (ParameterizedType) this.getClass().getGenericSuperclass();
@@ -68,7 +69,7 @@ public abstract class BaseService<T extends BaseTable> {
      *
      * @return
      */
-    protected Dao dao() {
+    public Dao dao() {
         return dao;
     }
 

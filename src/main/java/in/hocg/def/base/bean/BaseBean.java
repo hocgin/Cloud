@@ -1,5 +1,7 @@
 package in.hocg.def.base.bean;
 
+import org.nutz.json.Json;
+import org.nutz.json.JsonFormat;
 import org.nutz.lang.Mirror;
 
 import java.io.Serializable;
@@ -9,6 +11,7 @@ import java.io.Serializable;
  */
 public abstract class BaseBean implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     /**
      * 获取指定属性的值
      * @param attr
@@ -25,6 +28,10 @@ public abstract class BaseBean implements Serializable {
      */
     public void set(String attr, Object value) {
         Mirror.me(this).setValue(this, attr, value);
+    }
+
+    public String toString() {
+        return Json.toJson(this, JsonFormat.compact().setQuoteName(true).setIgnoreNull(false));
     }
 
 }
