@@ -15,7 +15,7 @@ import java.lang.reflect.ParameterizedType;
  * Created by hocgin on 十一月28  028.
  */
 @IocBean
-public abstract class BaseService<T extends BaseTable> extends IdNameEntityService{
+public abstract class TableService<T extends BaseTable> extends IdNameEntityService{
     @Inject
     private Dao dao;
     private ParameterizedType clazz = (ParameterizedType) this.getClass().getGenericSuperclass();

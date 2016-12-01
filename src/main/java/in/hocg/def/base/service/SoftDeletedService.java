@@ -6,7 +6,7 @@ import org.nutz.dao.Cnd;
 /**
  * Created by hocgin on 16-12-1.
  */
-public abstract class SoftDeletedService<T extends BaseTable> extends BaseService<T> {
+public abstract class SoftDeletedService<T extends BaseTable> extends TableService<T> {
 
 
     /**
