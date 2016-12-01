@@ -4,3 +4,4 @@ src/main/webapp/view/node_modules/
 TODO.md
 npm-debug.log
 .fuse_hidden*
+target/

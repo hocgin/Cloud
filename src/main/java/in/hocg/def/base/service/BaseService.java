@@ -1,6 +1,7 @@
 package in.hocg.def.base.service;
 
 import in.hocg.def.base.bean.BaseTable;
+import org.nutz.dao.Cnd;
 import org.nutz.dao.Dao;
 import org.nutz.dao.entity.annotation.Table;
 import org.nutz.ioc.loader.annotation.Inject;
@@ -70,4 +71,14 @@ public abstract class BaseService<T extends BaseTable> {
     protected Dao dao() {
         return dao;
     }
+
+
+    /**
+     * 获取Cnd
+     * @return
+     */
+    public Cnd all() {
+        return Cnd.NEW();
+    }
+
 }

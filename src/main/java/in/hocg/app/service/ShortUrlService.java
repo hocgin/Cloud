@@ -1,11 +1,11 @@
 package in.hocg.app.service;
 
 import in.hocg.app.bean.ShortUrl;
-import in.hocg.def.base.service.BaseService;
+import in.hocg.def.base.service.SoftDeletedService;
 
 /**
  * (๑`灬´๑)
  * Created by hocgin on 十一月28  028.
  */
-public class ShortUrlService extends BaseService<ShortUrl> {
+public class ShortUrlService extends SoftDeletedService<ShortUrl> {
 }

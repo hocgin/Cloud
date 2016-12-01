@@ -1,5 +1,7 @@
 package in.hocg;
 
+import in.hocg.app.bean.Setting;
+import in.hocg.app.service.SettingService;
 import in.hocg.database.MainSeeder;
 import in.hocg.def.service.RedisService;
 import org.nutz.dao.Dao;
@@ -19,22 +21,9 @@ public class MainSetup implements Setup {
         Ioc ioc = nc.getIoc();
         Dao dao = ioc.get(Dao.class);
         Daos.createTablesInPackage(dao, "in.hocg", true);
-        _initRedis(ioc);
         _loadSenders(ioc);
+        _initRedis(ioc);
         _initQuartz(ioc);
-
-
-        // -- Test Email
-//        try {
-//            HtmlEmail email = ioc.get(HtmlEmail.class);
-//            email.addTo("578797748@qq.com");//请务必改成您自己的邮箱啊!!!
-//            email.setSubject("测试NutzBook");
-//            email.setMsg("This is a test mail ... :-)" + System.currentTimeMillis());
-//            email.buildMimeMessage();
-//            email.sendMimeMessage();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
     }
 
     @Override
@@ -50,14 +39,15 @@ public class MainSetup implements Setup {
     }
 
     /**
-     * 初始化Redis
+     * 提前Setting，初始化Redis
      * @param ioc
      */
     private void _initRedis(Ioc ioc) {
-        // redis 的加载
+        SettingService service = ioc.get(SettingService.class);
         RedisService redis = ioc.get(RedisService.class);
-        redis.set("domain", "http://localhost:8080/");
-        System.out.println(String.format("domain %s", redis.get("domain")));
+        for (Setting setting : service.query("redis")) {
+            redis.set(setting.getKey(), setting.getValue());
+        }
     }
 
     /**
