@@ -1,5 +1,5 @@
 `use strict`;
-var gulp = require('gulp'),
+const gulp = require('gulp'),
     watch = require('gulp-watch'),
     /**
      * 重命名文件
@@ -71,8 +71,7 @@ var gulp = require('gulp'),
  * gulp.task()
  * 加了return才是异步执行
  */
-// ---------------------------------------------------
-var path = {
+const path = {
     src: {
         dir: './src/',
         html: './src/',
@@ -101,7 +100,7 @@ gulp.task('default-dev', ['sass-build:watch', 'browser-sync']);
  * sass 编译任务
  */
 gulp.task('sass-build', function () {
-    var sassPath = path.src.sass + '**/*.scss';
+    const sassPath = path.src.sass + '**/*.scss';
     return gulp.src(sassPath)
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest(path.src.css));
@@ -111,7 +110,7 @@ gulp.task('sass-build', function () {
  * sass变化 -> 编译为css -> css 变化 -> auto-prefixer
  */
 gulp.task('sass-build:watch', function () {
-    var sassPath = path.src.sass + '**/*.scss';
+    const sassPath = path.src.sass + '**/*.scss';
     return gulp.src(sassPath)
     // .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(watch(sassPath))
@@ -129,7 +128,7 @@ gulp.task('sass-build:watch', function () {
  * 自动浏览器前缀
  */
 gulp.task('auto-prefixer', ['sass-build'], function () {
-    var srcCss = path.src.css + '**/*.css';
+    const srcCss = path.src.css + '**/*.css';
     return gulp.src(srcCss).pipe(autoPrefixer({
         browsers: ['last 2 versions', 'Android >= 4.0'],
         cascade: true, //是否美化属性值 默认：true 像这样：
@@ -142,7 +141,7 @@ gulp.task('auto-prefixer', ['sass-build'], function () {
  * 实时浏览
  */
 gulp.task('browser-sync', function () {
-    var files = [
+    const files = [
         path.src.dir + '**/*.html',
         path.src.dir + '**/*.css',
         path.src.dir + '**/*.js'
@@ -159,21 +158,21 @@ gulp.task('browser-sync', function () {
  **/
 gulp.task('min', ['min-js', 'min-css', 'min-image', 'rev', 'mv-oth', 'mv-dist']);
 gulp.task('min-js', ['concat-global-js'], function () {
-    var srcJs = path.src.js + '**/*.js';
+    const srcJs = path.src.js + '**/*.js';
     return gulp.src(srcJs)
         .pipe(uglify())
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest(path.build.js));
 });
 gulp.task('min-css', ['sass-build'], function () {
-    var srcCss = path.src.css + '**/*.css';
+    const srcCss = path.src.css + '**/*.css';
     return gulp.src(srcCss)
         .pipe(cssmin())
         .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest(path.build.css));
 });
 gulp.task('min-image', function () {
-    var srcImg = path.src.img + '/**/*';
+    const srcImg = path.src.img + '/**/*';
     return gulp.src(srcImg)
         .pipe(imagemin())
         .pipe(gulp.dest(path.build.img))
@@ -182,12 +181,12 @@ gulp.task('min-image', function () {
  * 移动 oth文件夹内容至dist
  */
 gulp.task('mv-oth', function () {
-    var srcOth = path.src.oth + '/**/*';
+    const srcOth = path.src.oth + '/**/*';
     return gulp.src(srcOth)
         .pipe(gulp.dest(path.build.oth))
 });
 gulp.task('mv-dist', function () {
-    var srcDist = path.src.dist + '/**/*';
+    const srcDist = path.src.dist + '/**/*';
     return gulp.src(srcDist)
         .pipe(gulp.dest(path.build.dist))
 });
@@ -195,7 +194,7 @@ gulp.task('mv-dist', function () {
  * 处理文件URL引入缓存
  */
 gulp.task('rev', function () {
-    var srcHtml = path.src.html + '**/*.html';
+    const srcHtml = path.src.html + '**/*.html';
     gulp.src(srcHtml)
         .pipe(rev())
         .pipe(gulp.dest(path.build.html))
@@ -204,7 +203,7 @@ gulp.task('rev', function () {
  * 合并 全局js ./assert/js
  */
 gulp.task('concat-global-js', function () {
-    var allJs = [
+    const allJs = [
         // path.src.js + 'app1.js',
         // path.src.js + 'app2.js',
     ];
@@ -224,7 +223,7 @@ gulp.task('jshint', function () {
  * 自动备份build目录到./backup目录
  */
 gulp.task('auto-backup', function () {
-    var date = new Date(),
+    let date = new Date(),
         dirName = date.toISOString().split('T')[0].replace(/[\D]/g, ''),
         reg = /^\d+$/g,
         build = path.build.dir;
@@ -242,7 +241,7 @@ gulp.task('auto-backup', function () {
     });
     function backup() {
         fs.readdir(path.backup, function (err, data) {
-            var dirs = [], l;
+            let dirs = [], l;
             if (data && data.length > 0) {
                 for (var i = 0, j = data.length; i < j; i++) {
                     if (data[i].match(reg)) {

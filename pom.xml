@@ -41,6 +41,17 @@
             <version>${nutz-version}</version>
         </dependency>
         <!--NUTZ Core:End-->
+        <dependency>
+            <groupId>org.nutz</groupId>
+            <artifactId>nutz-plugins-apidoc</artifactId>
+            <version>${nutz-version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.nutz</groupId>
+                    <artifactId>nutz</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all -->
         <dependency>
             <groupId>org.codehaus.groovy</groupId>

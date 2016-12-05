@@ -19,11 +19,11 @@ public class Setting extends BaseTable{
     @Column
     @NotNull
     @Comment("主键， 用于索引")
-    private String key;
+    private String _key;
 
     @Column
     @Comment("值")
-    private String value;
+    private String _value;
 
     @Column
     @NotNull
@@ -39,19 +39,19 @@ public class Setting extends BaseTable{
     }
 
     public String getKey() {
-        return key;
+        return _key;
     }
 
     public void setKey(String key) {
-        this.key = key;
+        this._key = key;
     }
 
     public String getValue() {
-        return value;
+        return _value;
     }
 
     public void setValue(String value) {
-        this.value = value;
+        this._value = value;
     }
 
     public String getDescription() {

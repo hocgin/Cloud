@@ -3,6 +3,7 @@ package in.hocg.app.service;
 import in.hocg.app.bean.Setting;
 import in.hocg.def.base.service.TableService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,6 +17,7 @@ public class SettingService extends TableService<Setting> {
      * @return
      */
     public List<Setting> query(String tag) {
-        return dao().query(tableClass(), all().and("tag", "=", tag));
+        List<Setting> settings = dao().query(tableClass(), all().and("tag", "=", tag));
+        return settings == null? new ArrayList<>(): settings;
     }
 }

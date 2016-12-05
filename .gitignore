@@ -5,3 +5,4 @@ TODO.md
 npm-debug.log
 .fuse_hidden*
 target/
+node_modules/
