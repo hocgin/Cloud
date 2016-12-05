@@ -18,7 +18,7 @@ import redis.clients.jedis.JedisPool;
 @IocBean(name = "redis")
 public class RedisInterceptor implements MethodInterceptor {
     @Inject
-    JedisPool jedisPool;
+    private JedisPool jedisPool;
 
     static ThreadLocal<Jedis> TL = new ThreadLocal<>();
 
