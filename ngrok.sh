@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# need usa ngrok, default false
 subDomain=cloud
 port=8080
 dir=/home/hocgin/Documents/NutzStore/Nutstore/toolBox/ngrok
