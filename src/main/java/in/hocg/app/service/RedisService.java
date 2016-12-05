@@ -1,9 +1,9 @@
-package in.hocg.def.service;
+package in.hocg.app.service;
 
 import org.nutz.ioc.aop.Aop;
 import org.nutz.ioc.loader.annotation.IocBean;
 
-import static in.hocg.def.interceptor.RedisInterceptor.jedis;
+import static in.hocg.app.interceptor.RedisInterceptor.jedis;
 
 /**
  * (๑`灬´๑)

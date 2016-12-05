@@ -1,5 +1,6 @@
 package in.hocg.database;
 
+import in.hocg.database.seeders.SettingsSeeder;
 import org.nutz.dao.Dao;
 import org.nutz.ioc.loader.annotation.Inject;
 import org.nutz.ioc.loader.annotation.IocBean;
@@ -23,7 +24,7 @@ public class MainSeeder {
      */
     public List<Seeder> getSeeders() {
         return new ArrayList<>(Arrays.<Seeder>asList(
-
+                new SettingsSeeder()
         ));
     }
 

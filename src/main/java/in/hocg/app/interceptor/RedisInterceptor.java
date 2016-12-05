@@ -1,5 +1,6 @@
-package in.hocg.def.interceptor;
+package in.hocg.app.interceptor;
 
+import in.hocg.app.service.RedisService;
 import org.nutz.aop.InterceptorChain;
 import org.nutz.aop.MethodInterceptor;
 import org.nutz.ioc.loader.annotation.Inject;
@@ -12,7 +13,7 @@ import redis.clients.jedis.JedisPool;
  * Created by hocgin on 十一月28  028.
  *
  * Usa:
- *  @see in.hocg.def.service.RedisService
+ *  @see RedisService
  */
 @IocBean(name = "redis")
 public class RedisInterceptor implements MethodInterceptor {

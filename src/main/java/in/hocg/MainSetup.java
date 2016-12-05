@@ -3,7 +3,7 @@ package in.hocg;
 import in.hocg.app.bean.Setting;
 import in.hocg.app.service.SettingService;
 import in.hocg.database.MainSeeder;
-import in.hocg.def.service.RedisService;
+import in.hocg.app.service.RedisService;
 import org.nutz.dao.Dao;
 import org.nutz.dao.util.Daos;
 import org.nutz.integration.quartz.NutQuartzCronJobFactory;
