@@ -35,6 +35,12 @@
             <param-name>modules</param-name>
             <param-value>in.hocg.MainModule</param-value>
         </init-param>
+        <init-param>
+            <param-name>ignore</param-name>
+            <param-value>
+                ^(.+[.])(jsp|png|gif|jpg|js|css|jspx|jpeg|html)$
+            </param-value>
+        </init-param>
     </filter>
     <filter-mapping>
         <filter-name>nutz</filter-name>

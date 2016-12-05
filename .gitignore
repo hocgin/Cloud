@@ -1,6 +1,6 @@
 .idea/
 *.iml
-src/main/webapp/WEB-INF/view/node_modules/
+src/main/webapp/view/node_modules/
 TODO.md
 npm-debug.log
 .fuse_hidden*
