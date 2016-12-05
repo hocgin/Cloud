@@ -29,10 +29,4 @@ public class HomeModule extends BaseModule {
 
     }
 
-
-    @GET
-    @At("/api-doc")
-    public String apiDoc() {
-        return "apidoc/index.html";
-    }
 }

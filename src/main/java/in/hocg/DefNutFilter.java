@@ -18,8 +18,8 @@ public class DefNutFilter extends NutFilter {
     public void init(FilterConfig conf) throws ServletException {
         super.init(conf);
         //去掉druid监控url监控
-        prefixs.add(conf.getServletContext().getContextPath() + "/druid/");
-        prefixs.add(conf.getServletContext().getContextPath() + "/rs/");
+        prefixs.add(conf.getServletContext().getContextPath() + "/druid");
+        prefixs.add(conf.getServletContext().getContextPath() + "/rs");
     }
 
     @Override
