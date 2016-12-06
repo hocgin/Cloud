@@ -1,10 +1,8 @@
 package in.hocg;
 
 import in.hocg.app.modules.HomeModule;
-import org.nutz.mvc.annotation.IocBy;
-import org.nutz.mvc.annotation.Modules;
-import org.nutz.mvc.annotation.SetupBy;
-import org.nutz.mvc.annotation.UrlMappingBy;
+import org.nutz.integration.shiro.ShiroSessionProvider;
+import org.nutz.mvc.annotation.*;
 import org.nutz.mvc.ioc.provider.ComboIocProvider;
 import org.nutz.plugins.apidoc.ApidocUrlMapping;
 import org.nutz.plugins.apidoc.annotation.Api;
@@ -26,6 +24,7 @@ import org.nutz.plugins.apidoc.annotation.ApiMatchMode;
         })
 @SetupBy(value = MainSetup.class) // 启动初始化数据库
 @UrlMappingBy(ApidocUrlMapping.class) // api doc
+@SessionBy(ShiroSessionProvider.class) // Shiro 管理Session
 public class MainModule {
         // 开发阶段
         public static boolean DEBUG = true;

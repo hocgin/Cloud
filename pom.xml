@@ -71,7 +71,7 @@
             <artifactId>jedis</artifactId>
             <version>${jedis-version}</version>
         </dependency>
-        
+
         <!--quartz 定时任务:Start-->
         <dependency>
             <groupId>org.nutz</groupId>
@@ -140,8 +140,41 @@
         </dependency>
         <!--Email:End-->
 
+        <!--Shiro:Start-->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-all</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.nutz</groupId>
+            <artifactId>nutz-integration-shiro</artifactId>
+            <version>${nutz-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.3</version>
+        </dependency>
+        <!--Shiro:End-->
+
     </dependencies>
     <!--依赖:End-->
+
+    <!--私服:Start-->
+    <repositories>
+        <repository>
+            <id>nexus</id>
+            <name>Team Nexus Repository</name>
+            <url>http://nexus.hocgin.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+    <!--私服:End-->
 
 
     <build>

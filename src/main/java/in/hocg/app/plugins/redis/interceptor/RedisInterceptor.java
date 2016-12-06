@@ -1,6 +1,6 @@
-package in.hocg.app.redis.interceptor;
+package in.hocg.app.plugins.redis.interceptor;
 
-import in.hocg.app.redis.RedisService;
+import in.hocg.app.plugins.redis.RedisService;
 import org.nutz.aop.InterceptorChain;
 import org.nutz.aop.MethodInterceptor;
 import org.nutz.ioc.loader.annotation.Inject;

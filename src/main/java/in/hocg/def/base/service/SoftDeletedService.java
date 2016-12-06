@@ -1,12 +1,12 @@
 package in.hocg.def.base.service;
 
-import in.hocg.def.base.bean.BaseTable;
+import in.hocg.def.base.bean.SoftDeleted;
 import org.nutz.dao.Cnd;
 
 /**
  * Created by hocgin on 16-12-1.
  */
-public abstract class SoftDeletedService<T extends BaseTable> extends TableService<T> {
+public abstract class SoftDeletedService<T extends SoftDeleted> extends TableService<T> {
 
 
     /**

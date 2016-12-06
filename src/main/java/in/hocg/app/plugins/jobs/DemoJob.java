@@ -1,4 +1,4 @@
-package in.hocg.app.jobs;
+package in.hocg.app.plugins.jobs;
 
 import org.nutz.ioc.loader.annotation.IocBean;
 import org.nutz.log.Log;

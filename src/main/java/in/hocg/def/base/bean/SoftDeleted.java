@@ -22,4 +22,8 @@ public abstract class SoftDeleted extends BaseTable {
     public void setDeleteAt(Date deleteAt) {
         this.deleteAt = deleteAt;
     }
+
+    public boolean hasDeleted() {
+        return deleteAt != null;
+    }
 }
