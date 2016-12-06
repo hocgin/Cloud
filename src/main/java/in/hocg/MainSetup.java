@@ -1,7 +1,7 @@
 package in.hocg;
 
 import in.hocg.app.bean.Setting;
-import in.hocg.app.service.RedisService;
+import in.hocg.app.redis.RedisService;
 import in.hocg.app.service.SettingService;
 import in.hocg.database.MainSeeder;
 import org.nutz.dao.Dao;
