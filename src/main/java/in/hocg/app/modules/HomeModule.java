@@ -17,13 +17,6 @@ import org.nutz.plugins.apidoc.annotation.ApiMatchMode;
 public class HomeModule extends BaseModule {
     private static final Log log = Logs.get();
 
-    /**
-     * @api {GET} /index 测试apidoc
-     * @apiGroup propertyManage
-     * @apiVersion 1.0.0
-     *
-     * @apiParam {PropertyManagementMessage}   propertyManagementMessage           消息对象
-     */
     @GET
     @At("/index")
     public void index() {
