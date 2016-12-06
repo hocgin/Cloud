@@ -12,6 +12,11 @@ import org.nutz.dao.entity.annotation.Table;
 @Table("t_settings")
 public class Setting extends BaseTable{
 
+    public enum Tag {
+        Default,
+        Redis
+    }
+
     @Column
     @Comment("标志, 决定分组")
     private String tag;
@@ -50,6 +55,22 @@ public class Setting extends BaseTable{
         return _value;
     }
 
+    /**
+     * "true" / "false"
+     * @return
+     */
+    public boolean getValueBoolean() {
+        return Boolean.parseBoolean(_value);
+    }
+
+    public int getValueInt() {
+        return Integer.parseInt(_value);
+    }
+
+    public long getValueLong() {
+        return Long.parseLong(_value);
+    }
+
     public void setValue(String value) {
         this._value = value;
     }
@@ -61,4 +82,5 @@ public class Setting extends BaseTable{
     public void setDescription(String description) {
         this.description = description;
     }
+
 }

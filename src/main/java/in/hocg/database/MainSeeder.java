@@ -6,7 +6,7 @@ import org.nutz.ioc.loader.annotation.Inject;
 import org.nutz.ioc.loader.annotation.IocBean;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -18,13 +18,16 @@ public class MainSeeder {
     @Inject
     private Dao dao;
 
+    @Inject
+    private SettingsSeeder settingsSeeder;
+
     /**
      * 装载数据库预执行数据器
      * @return
      */
     public List<Seeder> getSeeders() {
-        return new ArrayList<>(Arrays.<Seeder>asList(
-                new SettingsSeeder()
+        return new ArrayList<>(Collections.<Seeder>singletonList(
+                settingsSeeder
         ));
     }
 

@@ -13,10 +13,25 @@ public abstract class TableService<T extends BaseTable> extends IdNameEntityServ
 
     /**
      * 获取Cnd
+     *
      * @return
      */
     public Cnd all() {
         return Cnd.NEW();
     }
 
+
+    /**
+     * 保存 || 更新
+     *
+     * @param t
+     */
+    public void save(T t) {
+        T t1;
+        if (t.getId() != null && (t1 = _fetch(t)) != null) {
+            _update(t1);
+        } else {
+            _insert(t);
+        }
+    }
 }
