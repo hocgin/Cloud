@@ -7,13 +7,12 @@ import org.nutz.log.Logs;
 import org.nutz.mvc.annotation.At;
 import org.nutz.mvc.annotation.GET;
 import org.nutz.plugins.apidoc.annotation.Api;
-import org.nutz.plugins.apidoc.annotation.ApiMatchMode;
 
 /**
  * (๑`灬´๑)
  * Created by hocgin on 十一月28  028.
  */
-@Api(name = "in.hocg.app.modules.HomeModule", description = "顶级路径", match= ApiMatchMode.NONE)
+@Api(name = "in.hocg.app.modules.HomeModule", description = "顶级路径")
 public class HomeModule extends BaseModule {
     private static final Log log = Logs.get();
 

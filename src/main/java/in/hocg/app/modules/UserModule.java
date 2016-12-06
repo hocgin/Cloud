@@ -18,23 +18,24 @@ import javax.servlet.http.HttpSession;
 @At("/user")
 @Ok("json:full")
 public class UserModule extends BaseModule implements ApiDocResponse {
-
-    @Inject
-    UserService service;
-    
-	@POST
-    @At("/sign-in")
-    public Object signIn(String name, String password, HttpSession session) {
-        User user = service.fetchForName(name);
-        if (service.login(user, password)) {
-            SecurityUtils.getSubject().login(new SimpleShiroToken(user.getId()));
-            session.setAttribute(Custom.Session.User, user);
-	        return true;
-        }
-        return false;
-    }
 	
-    @GET
+	@Inject
+	UserService service;
+	
+	
+	@POST
+	@At("/sign-in")
+	public Object signIn(String name, String password, HttpSession session) {
+		User user = service.fetchForName(name);
+		if (service.login(user, password)) {
+			SecurityUtils.getSubject().login(new SimpleShiroToken(user.getId()));
+			session.setAttribute(Custom.Session.User, user);
+			return true;
+		}
+		return false;
+	}
+	
+	@GET
 	@At("/sign-out")
 	public void signOut(HttpSession session) {
 		SecurityUtils.getSubject().logout();

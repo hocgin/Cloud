@@ -22,9 +22,11 @@ import org.nutz.plugins.apidoc.annotation.ApiMatchMode;
                 "*async",
                 "*org.nutz.integration.quartz.QuartzIocLoader" // 任务队列
         })
+@ChainBy(args="mvc/chain.js")
 @SetupBy(value = MainSetup.class) // 启动初始化数据库
 @UrlMappingBy(ApidocUrlMapping.class) // api doc
 @SessionBy(ShiroSessionProvider.class) // Shiro 管理Session
+@Localization(value = "i18/", defaultLocalizationKey = "zh-CN") // 国际化
 public class MainModule {
         // 开发阶段
         public static boolean DEBUG = true;
