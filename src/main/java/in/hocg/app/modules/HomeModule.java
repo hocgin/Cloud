@@ -1,6 +1,7 @@
 package in.hocg.app.modules;
 
 import in.hocg.def.base.module.BaseModule;
+import org.apache.shiro.authz.annotation.RequiresUser;
 import org.nutz.log.Log;
 import org.nutz.log.Logs;
 import org.nutz.mvc.annotation.At;
@@ -26,7 +27,14 @@ public class HomeModule extends BaseModule {
     @GET
     @At("/index")
     public void index() {
+    }
 
+
+    @GET
+    @At("/permission")
+    @RequiresUser
+    public void permission() {
+        System.out.println("[permission OK]");
     }
 
 }
