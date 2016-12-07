@@ -2,12 +2,19 @@ package in.hocg;
 
 import in.hocg.app.bean.Setting;
 import in.hocg.app.plugins.redis.RedisService;
+import in.hocg.app.plugins.shiro.authority.AuthorityService;
+import in.hocg.app.plugins.shiro.bean.Role;
+import in.hocg.app.plugins.shiro.bean.User;
 import in.hocg.app.service.SettingService;
 import in.hocg.database.MainSeeder;
+import org.nutz.dao.Cnd;
 import org.nutz.dao.Dao;
+import org.nutz.dao.entity.Record;
 import org.nutz.dao.util.Daos;
 import org.nutz.integration.quartz.NutQuartzCronJobFactory;
 import org.nutz.ioc.Ioc;
+import org.nutz.log.Log;
+import org.nutz.log.Logs;
 import org.nutz.mvc.NutConfig;
 import org.nutz.mvc.Setup;
 
@@ -18,6 +25,7 @@ import static in.hocg.MainModule.FORCE_CREATE_TABLE;
  * Created by hocgin on 十一月28  028.
  */
 public class MainSetup implements Setup {
+    private static final Log log = Logs.get();
 
     @Override
     public void init(NutConfig nc) {
@@ -27,8 +35,29 @@ public class MainSetup implements Setup {
         _loadSenders(ioc);
         _initRedis(ioc);
         _initQuartz(ioc);
+        _initAuthority(dao, ioc);
     }
-
+	
+	/**
+	 * 初始化权限
+	 * @param dao
+	 * @param ioc
+	 */
+	private void _initAuthority(Dao dao, Ioc ioc) {
+	    Role role = dao.fetch(Role.class, Cnd.where("name", "=", "admin"));
+        Record fetch = dao.fetch("t_user_role", Cnd.where("role_id", "=", role.getId()));
+        if (!fetch.isEmpty()) {
+            User admin = dao.fetch(User.class, fetch.getString("u_id"));
+	        if (admin != null) {
+		        AuthorityService as = ioc.get(AuthorityService.class);
+		        as.initFormPackage("in.hocg.app");
+		        as.checkBasicRoles(admin);
+	        } else {
+		        log.warnf("[hocgin] admin user not found !!!");
+	        }
+        }
+    }
+    
     @Override
     public void destroy(NutConfig nc) {
     }

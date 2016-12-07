@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
  * Created by hocgin on 16-12-6.
  */
 @At("/user")
-@Ok("json:full")
 public class UserModule extends BaseModule implements ApiDocResponse {
 	
 	@Inject

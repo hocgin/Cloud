@@ -65,7 +65,7 @@ public class UserService extends SoftDeletedService<User> {
 	 * @param salt 盐
 	 * @return
 	 */
-	private String _password(String password, String salt) {
+	public String _password(String password, String salt) {
 		return Lang.md5(String.format("%s@%s", password, salt));
 	}
 	
@@ -76,7 +76,7 @@ public class UserService extends SoftDeletedService<User> {
 	 * @param inputPassword 待校验密码
 	 * @return
 	 */
-	private boolean _checkPassword(String password, String salt, String inputPassword) {
+	public boolean _checkPassword(String password, String salt, String inputPassword) {
 		return Objects.equals(password, _password(inputPassword, salt));
 	}
 }

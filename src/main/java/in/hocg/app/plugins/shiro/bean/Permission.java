@@ -10,7 +10,7 @@ import org.nutz.dao.entity.annotation.*;
 @Table("t_permissions")
 public class Permission  extends BaseTable {
     @Column("name")
-    @Comment("权限命名")
+    @Comment("权限命名;英文;唯一")
     @NotNull
     protected String name;
     @Column("alias")
