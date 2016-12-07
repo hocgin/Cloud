@@ -1,10 +1,11 @@
 ## 根目录
 > 关于整个项目架构 & 导包 & 依赖 & 规范
 - src/main/java/in.hocg
-  - app
-  - database
-  - app
-  - app
+  - app/       `项目代码`
+  - database/  `测试数据/预定数据`
+  - def/       `框架基础; 有约定, 无依赖`
+  - utils/     `公共tool; 无任何依赖`
+  - validator/ `校验框架`
 
 ## 规范
 - 各个模块使用文件夹分隔。
