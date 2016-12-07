@@ -1,6 +1,6 @@
-package in.hocg.app.service;
+package in.hocg.app.services;
 
-import in.hocg.app.bean.ShortUrl;
+import in.hocg.app.beans.ShortUrl;
 import in.hocg.def.base.service.SoftDeletedService;
 
 /**

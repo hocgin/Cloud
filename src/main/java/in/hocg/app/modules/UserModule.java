@@ -3,7 +3,7 @@ package in.hocg.app.modules;
 import in.hocg.Custom;
 import in.hocg.app.plugins.apidoc.ApiDocResponse;
 import in.hocg.app.plugins.shiro.bean.User;
-import in.hocg.app.service.UserService;
+import in.hocg.app.services.UserService;
 import in.hocg.def.base.module.BaseModule;
 import org.apache.shiro.SecurityUtils;
 import org.nutz.integration.shiro.SimpleShiroToken;

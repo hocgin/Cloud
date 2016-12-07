@@ -1,4 +1,4 @@
-package in.hocg.app.bean;
+package in.hocg.app.beans;
 
 import com.sun.istack.internal.NotNull;
 import in.hocg.def.base.bean.BaseTable;

@@ -1,7 +1,7 @@
-package in.hocg.app.service;
+package in.hocg.app.services;
 
 import com.sun.istack.internal.NotNull;
-import in.hocg.app.bean.Setting;
+import in.hocg.app.beans.Setting;
 import in.hocg.def.base.service.TableService;
 import org.nutz.dao.Cnd;
 

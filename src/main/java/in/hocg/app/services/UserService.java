@@ -1,4 +1,4 @@
-package in.hocg.app.service;
+package in.hocg.app.services;
 
 import in.hocg.app.plugins.shiro.bean.User;
 import in.hocg.def.base.service.SoftDeletedService;

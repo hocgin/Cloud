@@ -1,11 +1,11 @@
 package in.hocg;
 
-import in.hocg.app.bean.Setting;
+import in.hocg.app.beans.Setting;
 import in.hocg.app.plugins.redis.RedisService;
 import in.hocg.app.plugins.shiro.authority.AuthorityService;
 import in.hocg.app.plugins.shiro.bean.Role;
 import in.hocg.app.plugins.shiro.bean.User;
-import in.hocg.app.service.SettingService;
+import in.hocg.app.services.SettingService;
 import in.hocg.database.MainSeeder;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.Dao;

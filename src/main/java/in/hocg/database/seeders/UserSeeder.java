@@ -2,7 +2,7 @@ package in.hocg.database.seeders;
 
 import in.hocg.app.plugins.shiro.bean.Role;
 import in.hocg.app.plugins.shiro.bean.User;
-import in.hocg.app.service.UserService;
+import in.hocg.app.services.UserService;
 import in.hocg.database.Seeder;
 import org.nutz.dao.Dao;
 import org.nutz.ioc.loader.annotation.Inject;

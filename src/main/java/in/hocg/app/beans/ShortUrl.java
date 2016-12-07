@@ -1,4 +1,4 @@
-package in.hocg.app.bean;
+package in.hocg.app.beans;
 
 import in.hocg.def.base.bean.SoftDeleted;
 import org.nutz.dao.entity.annotation.Column;

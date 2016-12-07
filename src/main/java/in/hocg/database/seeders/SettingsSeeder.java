@@ -1,7 +1,7 @@
 package in.hocg.database.seeders;
 
-import in.hocg.app.bean.Setting;
-import in.hocg.app.service.SettingService;
+import in.hocg.app.beans.Setting;
+import in.hocg.app.services.SettingService;
 import in.hocg.database.Seeder;
 import org.nutz.dao.Dao;
 import org.nutz.ioc.loader.annotation.Inject;
