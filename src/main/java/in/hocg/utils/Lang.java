@@ -2,6 +2,7 @@ package in.hocg.utils;
 
 /**
  * Created by hocgin on 16-12-7.
+ * 不好归类的常用工具方法
  */
 public class Lang {
 	

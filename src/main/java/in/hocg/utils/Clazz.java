@@ -1,4 +1,4 @@
-package in.hocg.def.utils;
+package in.hocg.utils;
 
 import java.lang.reflect.Field;
 
