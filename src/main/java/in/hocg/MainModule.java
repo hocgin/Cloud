@@ -32,5 +32,5 @@ public class MainModule {
         // 开发阶段
         public static boolean DEBUG = true;
         // 强制创建表
-        public static boolean FORCE_CREATE_TABLE = true;
+        public static boolean FORCE_CREATE_TABLE = false;
 }

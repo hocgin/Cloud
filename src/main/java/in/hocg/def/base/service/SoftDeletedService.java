@@ -27,12 +27,64 @@ public abstract class SoftDeletedService<T extends SoftDeleted> extends TableSer
     }
 
     /**
-     * 只查询被删除的
+     * 只查询被软删除的
      * @return
      */
     public Cnd onlyTrashed() {
         return Cnd.NEW().and("delete_at", "!=", null);
     }
-
-
+    
+    
+    /**
+     * 软删除
+     * @param obj
+     */
+    public void softDelete(T obj) {
+        obj.setDeleteAt(now());
+        _update(obj);
+    }
+    
+    /**
+     * 软删除
+     * @param id 主键
+     */
+    public void softDelete(long id) {
+        softDelete(fetch(id));
+    }
+    
+    /**
+     * 软删除
+     * @param name 主键
+     */
+    public void softDelete(String name) {
+        softDelete(fetch(name));
+    }
+    
+    
+    /**
+     * 撤销软删除
+     * @param obj
+     * @return
+     */
+    public void restore(T obj) {
+        obj.setDeleteAt(null);
+        _update(obj);
+    }
+    
+    /**
+     * 撤销软删除
+     * @param id 主键
+     */
+    public void restore(long id) {
+        restore(fetch(id));
+    }
+    
+    /**
+     * 撤销软删除
+     * @param name 主键
+     */
+    public void restore(String name) {
+        restore(fetch(name));
+    }
+    
 }
