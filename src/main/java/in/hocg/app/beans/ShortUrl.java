@@ -13,7 +13,7 @@ import org.nutz.dao.entity.annotation.Table;
 public class ShortUrl extends SoftDeleted {
 
     @Column
-    @Comment("4位数及以上,英文/数字/某些符号")
+    @Comment("6位,英文/数字/某些符号")
     private String code;
 
     @Column
