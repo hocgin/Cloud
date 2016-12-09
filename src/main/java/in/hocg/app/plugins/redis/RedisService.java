@@ -11,6 +11,14 @@ import static in.hocg.app.plugins.redis.interceptor.RedisInterceptor.jedis;
  */
 @IocBean
 public class RedisService {
+    
+    /**
+     * Redis 服务相关的 Key
+     */
+    public interface Service {
+        String SHORT_URL_DOMAIN = "service.shortUrl.domain";
+    }
+    
     @Aop("redis")
     public void set(String key, String val) {
         jedis().set(key, val);

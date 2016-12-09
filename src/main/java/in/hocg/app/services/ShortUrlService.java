@@ -1,8 +1,10 @@
 package in.hocg.app.services;
 
 import in.hocg.app.beans.ShortUrl;
+import in.hocg.app.plugins.redis.RedisService;
 import in.hocg.def.base.service.SoftDeletedService;
 import in.hocg.utils.ShortURL;
+import org.nutz.ioc.loader.annotation.Inject;
 
 /**
  * (๑`灬´๑)
@@ -10,20 +12,22 @@ import in.hocg.utils.ShortURL;
  */
 public class ShortUrlService extends SoftDeletedService<ShortUrl> {
 	
+	@Inject
+	protected RedisService redisService;
 	/**
 	 * 生成并记录短链
 	 * @param url
-	 * @return
+	 * @return url
 	 */
 	public String generate(String url) {
 		ShortUrl shortUrl = fetch(withTrashed().where("url", "=", url));
 		if (shortUrl == null) {
 			shortUrl = new ShortUrl();
 			shortUrl.setUrl(url);
-			shortUrl.setCode(ShortURL.encode(count()));
+			shortUrl.setCode(ShortURL.encode(count()+1));
 		}
 		save(shortUrl);
-		return shortUrl.getCode();
+		return String.format("%s%s", redisService.get(RedisService.Service.SHORT_URL_DOMAIN), shortUrl.getCode());
 	}
 	
 	/**
