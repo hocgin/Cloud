@@ -2,6 +2,7 @@ package in.hocg.utils;
 
 /**
  * Created by hocgin on 16-12-9.
+ * 短链接服务
  */
 public class ShortURL {
 	
