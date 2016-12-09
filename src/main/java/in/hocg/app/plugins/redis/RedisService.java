@@ -17,6 +17,8 @@ public class RedisService {
      */
     public interface Service {
         String SHORT_URL_DOMAIN = "service.shortUrl.domain";
+        String FILE_KEEP_PATH = "service.fileKeep.path";
+        String FILE_TRASH_PATH = "service.fileTrash.path";
     }
     
     @Aop("redis")
