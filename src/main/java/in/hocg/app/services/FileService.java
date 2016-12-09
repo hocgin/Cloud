@@ -47,6 +47,21 @@ public class FileService extends TableService<File> {
 	}
 	
 	/**
+	 * 获取需下载的文件对象
+	 * @param file
+	 * @return
+	 */
+	public java.io.File download(File file) {
+		return new java.io.File(String.format("%s%s", _uploadDirectory(), file.getLocalName()));
+	}
+	
+	
+	public java.io.File download(String id) {
+		File file = fetch(id);
+		return file == null? null :download(file);
+	}
+	
+	/**
 	 * 删除文件
 	 * - 移至Trash目录
 	 * @param file file 对象
@@ -88,9 +103,16 @@ public class FileService extends TableService<File> {
 	 * @throws IOException
 	 */
 	private boolean moveUploadDirectory(java.io.File uploadFile, String name) throws IOException {
-		String path = redisService.get(RedisService.Service.FILE_KEEP_PATH);
-		java.io.File target = new java.io.File(String.format("%s%s", path, name));
+		java.io.File target = new java.io.File(String.format("%s%s", _uploadDirectory(), name));
 		return  Files.move(uploadFile, target);
+	}
+	
+	/**
+	 * 获取文件上传目录
+	 * @return
+	 */
+	private String _uploadDirectory() {
+		return redisService.get(RedisService.Service.FILE_KEEP_PATH);
 	}
 	
 	/**
@@ -100,11 +122,18 @@ public class FileService extends TableService<File> {
 	 * @throws IOException
 	 */
 	private boolean moveTrashDirectory(java.io.File trashFile) throws IOException {
-		String path = redisService.get(RedisService.Service.FILE_TRASH_PATH);
 		// 原文件名-删除时间戳
 		String name = trashFile.getName() + "-" + System.currentTimeMillis();
-		java.io.File target = new java.io.File(String.format("%s/%s", path, name));
+		java.io.File target = new java.io.File(String.format("%s/%s", _trashDirectory(), name));
 		return  Files.move(trashFile, target);
+	}
+	
+	/**
+	 * 获取文件回收站目录
+	 * @return
+	 */
+	private String _trashDirectory() {
+		return redisService.get(RedisService.Service.FILE_TRASH_PATH);
 	}
 	
 }

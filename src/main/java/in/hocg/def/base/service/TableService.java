@@ -1,6 +1,8 @@
 package in.hocg.def.base.service;
 
+import in.hocg.app.plugins.shiro.bean.User;
 import in.hocg.def.base.bean.BaseTable;
+import org.apache.shiro.SecurityUtils;
 import org.nutz.dao.Cnd;
 import org.nutz.ioc.loader.annotation.IocBean;
 import org.nutz.service.IdNameEntityService;
@@ -89,4 +91,5 @@ public abstract class TableService<T extends BaseTable> extends IdNameEntityServ
     protected Date now() {
         return new Date();
     }
+    
 }
