@@ -5,8 +5,8 @@ package in.hocg.utils;
  */
 public class ShortURL {
 	
-	public static final String ALPHABET = "23456789bcdfghjkmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ-_";
-	public static final int BASE = ALPHABET.length();
+	private static final String ALPHABET = "23456789bcdfghjkmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ-_";
+	private static final int BASE = ALPHABET.length();
 	
 	/**
 	 * 生成短链
