@@ -25,7 +25,7 @@ public class UserSeeder implements Seeder {
 		
 		// role admin
 		Role role = new Role();
-		role.setName("admin");
+		role.setName(Role.Name.Admin.name());
 		role.setAlias("管理员");
 		role.setDescription("系统管理员;Default;");
 		

@@ -51,7 +51,7 @@ public class MainSetup implements Setup {
 	private void _initAuthority(Dao dao, Ioc ioc) {
 		log.info(String.format("正在初始化[%s]..", "权限检查模块"));
 		
-	    Role role = dao.fetch(Role.class, Cnd.where("name", "=", "admin"));
+	    Role role = dao.fetch(Role.class, Cnd.where("name", "=", Role.Name.Admin.name()));
         Record fetch = dao.fetch("t_user_role", Cnd.where("role_id", "=", role.getId()));
         if (!fetch.isEmpty()) {
             User admin = dao.fetch(User.class, fetch.getString("u_id"));

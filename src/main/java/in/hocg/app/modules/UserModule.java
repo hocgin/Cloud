@@ -24,7 +24,7 @@ public class UserModule extends BaseModule implements ApiDocResponse {
 	
 	@POST
 	@At("/sign-in")
-	public Object signIn(String name, String password, HttpSession session) {
+	public Object signIn(@Param("name") String name, @Param("password") String password, HttpSession session) {
 		User user = service.fetchForName(name);
 		if (service.login(user, password)) {
 			SecurityUtils.getSubject().login(new SimpleShiroToken(user.getId()));

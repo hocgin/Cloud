@@ -10,6 +10,10 @@ import java.util.List;
  */
 @Table("t_roles")
 public class Role  extends BaseTable {
+    public enum Name {
+        Admin
+    }
+    
     @Column("name")
     @Comment("角色命名;英文;唯一")
     protected String name;

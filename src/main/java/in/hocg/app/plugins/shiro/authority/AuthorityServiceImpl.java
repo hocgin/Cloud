@@ -76,9 +76,9 @@ public class AuthorityServiceImpl implements AuthorityService {
 	
 	public void checkBasicRoles(User admin) {
 		// 检查一下admin的权限
-		Role adminRole = dao.fetch(Role.class, Cnd.where("name", "=", "admin"));
+		Role adminRole = dao.fetch(Role.class, Cnd.where("name", "=", Role.Name.Admin.name()));
 		if (adminRole == null) {
-			adminRole = addRole("admin");
+			adminRole = addRole(Role.Name.Admin.name());
 		}
 		// admin账号必须存在与admin组
 		if (0 == dao.count("t_user_role", Cnd.where("u_id", "=", admin.getId()).and("role_id", "=", adminRole.getId()))) {
