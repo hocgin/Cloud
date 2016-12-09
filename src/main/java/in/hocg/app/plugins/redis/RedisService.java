@@ -30,4 +30,23 @@ public class RedisService {
     public String get(String key) {
         return jedis().get(key);
     }
+    
+    
+    /**
+     * 获取文件上传目录
+     * @return
+     */
+    public String getUploadDirectory() {
+        return get(RedisService.Service.FILE_KEEP_PATH);
+    }
+    
+    
+    
+    /**
+     * 获取文件回收站目录
+     * @return
+     */
+    public String getTrashDirectory() {
+        return get(RedisService.Service.FILE_TRASH_PATH);
+    }
 }
